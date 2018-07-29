@@ -1,0 +1,30 @@
+#include<iostream>
+using namespace std;
+#include<cmath>
+float rootcalculator(float p,float n,float guess,int iterations)
+{   
+  float l;                                                  // A variable is declared for holding the guess which will be improved to be as close as possible to the real answer.
+  l=guess;
+  for(int i=0;i<iterations;i++)
+  {
+        l=l-(pow(l,n)-p)/(n*pow(l,n-1));                  //The formula is "x_(n+1) = x_n - {f(x_n)/(f dash (x_n)} where, f(x)=x^n-p.
+  }
+  return l;
+}
+int main()
+{
+    float p;
+    float n;
+    float guess;
+    int iterations;
+    cout<<"Enter the no. whose root you want to evaluate"<<endl;
+    cin>>p;
+    cout<<"Enter the degree root, por ejemplo considering three, then the cubic root of p will be calculated"<<endl;
+    cin>>n;
+    cout<<"What you think the answer will be"<<endl;
+    cin>>guess;
+    cout<<"No. of iterations(the higher, the better is the answer)"<<endl;
+    cin>>iterations;
+    cout<<"The answer is "<<rootcalculator(p,n,guess,iterations)<<endl;
+    return 0;
+}
