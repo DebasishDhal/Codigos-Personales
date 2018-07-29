@@ -1,0 +1,87 @@
+#include<iostream>
+using namespace std;
+class node{
+    public:
+    int data;
+    node *next;
+    node(){
+        data=0;
+        next=NULL;
+    }
+};
+class ll{
+    public:
+    node *head;
+    node *tail;
+    int n;
+    ll()
+    {
+        head=NULL;
+        tail=NULL;
+        n=0;
+    }
+    void insert(int x);
+    void deletex();
+    void print(node *h);
+    void reverseprint(node *h);
+};
+void ll::insert(int x)
+{   
+    node *sample=new node;
+    sample->data=x;
+    sample->next=NULL;
+    if (head==NULL && tail==NULL)
+    {
+        head=sample;
+        tail=sample;
+        n=1;
+    }
+    else
+    {
+        tail->next=sample;
+        tail=sample;
+        n++;
+    }
+};
+void ll::print(node *h)
+{
+    if (h==NULL)
+    {
+        cout<<"It;s empty"<<endl;
+    }
+    else
+    {
+        while(h!=NULL)
+        {
+            cout<<h->data;
+            cout<<"->";
+            h=h->next;
+        }
+    }
+};
+void ll::reverseprint(node *h)
+{
+    if(h!=tail)
+    {
+        reverseprint(h->next);
+    }
+    cout<<h->data;   //Never,ever write if here, otherwise only the if command will work.
+    cout<<"->";   
+}
+int main()
+{
+    ll l;
+    l.insert(1);
+    l.insert(2);
+    l.insert(3);
+    l.insert(4);
+    l.insert(5);
+    l.insert(6);
+    l.print(l.head);
+    cout<<endl;
+    l.reverseprint(l.head);
+    return 0;
+}
+    
+        
+        
